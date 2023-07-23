@@ -4,7 +4,6 @@ plugins {
     id 'com.google.devtools.ksp'
     id 'kotlinx-serialization'
     id 'kotlin-parcelize'
-    id 'com.google.gms.google-services'
 }
 
 android {
@@ -19,13 +18,13 @@ android {
         versionName "0.0.10"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary true
-        }
         ksp {
             arg('room.schemaLocation', "$projectDir/schemas")
         }
 
+        ndk {
+            abiFilters "arm64-v8a"
+        }
     }
 
     signingConfigs {
@@ -50,16 +49,17 @@ android {
             buildConfigField("boolean", "IS_NEXT", IS_NEXT)
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
     }
     buildFeatures {
         compose true
@@ -82,7 +82,7 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    debugImplementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
     implementation 'androidx.activity:activity-compose:1.3.1'
 
@@ -109,7 +109,7 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
     implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
-    implementation "androidx.compose.runtime:runtime:$compose_version"
+//    implementation "androidx.compose.runtime:runtime:$compose_version"
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0'
 
     implementation "androidx.navigation:navigation-compose:2.4.2"
@@ -127,15 +127,10 @@ dependencies {
 
     implementation 'com.aventrix.jnanoid:jnanoid:2.0.0'
 
-    implementation platform('com.google.firebase:firebase-bom:31.2.3')
-    implementation 'com.google.firebase:firebase-analytics-ktx'
-
     implementation 'br.com.devsrsouza.compose.icons.android:feather:1.0.0'
     implementation "com.beust:klaxon:5.5"
 
     implementation 'io.shipbook:shipbooksdk:1.+'
-
-
 }
 
 task printVersionName {

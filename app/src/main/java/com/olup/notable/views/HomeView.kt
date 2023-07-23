@@ -1,5 +1,6 @@
 package com.olup.notable
 
+import AppSettingsModal
 import io.shipbook.shipbooksdk.Log
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*

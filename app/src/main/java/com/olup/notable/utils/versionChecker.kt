@@ -83,7 +83,7 @@ fun isLatestVersion(context: Context, force: Boolean = false): Boolean {
         // If either version does not fit simple semantic version don't compare
         if (latestVersionVersion == null || versionVersion == null) {
             throw Exception(
-                    "One of the version doesn't match simple semantic - comparison is impossible"
+                "One of the version doesn't match simple semantic - comparison is impossible"
             )
         }
 
@@ -96,4 +96,4 @@ fun isLatestVersion(context: Context, force: Boolean = false): Boolean {
     }
 }
 
-val isNext = BuildConfig.IS_NEXT
+val isNext = false

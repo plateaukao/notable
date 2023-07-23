@@ -1,4 +1,3 @@
-package com.olup.notable
 
 import android.content.Intent
 import android.net.Uri
@@ -17,8 +16,12 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import com.olup.notable.BuildConfig
 import com.olup.notable.components.SelectMenu
 import com.olup.notable.db.KvProxy
+import com.olup.notable.isLatestVersion
+import com.olup.notable.isNext
+import com.olup.notable.noRippleClickable
 import kotlin.concurrent.thread
 
 @kotlinx.serialization.Serializable

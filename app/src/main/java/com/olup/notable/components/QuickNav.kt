@@ -1,5 +1,6 @@
 package com.olup.notable
 
+import AppSettings
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
