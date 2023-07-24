@@ -1,6 +1,6 @@
 package com.olup.notable.modals
 
-import io.shipbook.shipbooksdk.Log
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -31,7 +31,7 @@ import com.olup.notable.noRippleClickable
 
 @ExperimentalComposeUiApi
 @Composable
-fun FolderConfigDialog(folderId: String, onClose : ()->Unit) {
+fun FolderConfigDialog(folderId: String, onClose: () -> Unit) {
     val folderRepository = FolderRepository(LocalContext.current)
     val folder = folderRepository.get(folderId) ?: return
 
@@ -92,12 +92,16 @@ fun FolderConfigDialog(folderId: String, onClose : ()->Unit) {
                         keyboardActions = KeyboardActions(onDone = {
                             focusManager.clearFocus()
                         }),
-                        modifier = Modifier.background(Color(230,230,230,255)).padding(10.dp, 0.dp).onFocusChanged { focusState ->
-                            if (!focusState.isFocused) {
-                                val updatedFolder = folder.copy(title = folderTitle)
-                                folderRepository.update(updatedFolder)
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(Color(230, 230, 230, 255))
+                            .padding(10.dp, 0.dp)
+                            .onFocusChanged { focusState ->
+                                if (!focusState.isFocused) {
+                                    val updatedFolder = folder.copy(title = folderTitle)
+                                    folderRepository.update(updatedFolder)
+                                }
                             }
-                        }
 
 
                     )

@@ -1,6 +1,6 @@
 package com.olup.notable.modals
 
-import io.shipbook.shipbooksdk.Log
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -97,6 +97,7 @@ fun NotebookConfigDialog(bookId: String, onClose : ()->Unit) {
                             focusManager.clearFocus()
                         }),
                         modifier = Modifier
+                            .fillMaxWidth()
                             .background(Color(230, 230, 230, 255))
                             .padding(10.dp, 0.dp)
                             .onFocusChanged { focusState ->

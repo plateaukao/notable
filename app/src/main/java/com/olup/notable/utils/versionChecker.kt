@@ -2,7 +2,7 @@ package com.olup.notable
 
 import android.content.Context
 import android.content.pm.PackageManager
-import io.shipbook.shipbooksdk.Log
+import android.util.Log
 import java.net.URL
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json

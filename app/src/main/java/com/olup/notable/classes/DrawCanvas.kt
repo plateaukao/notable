@@ -2,7 +2,7 @@ package com.olup.notable
 
 import android.content.Context
 import android.graphics.*
-import io.shipbook.shipbooksdk.Log
+import android.util.Log
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import androidx.compose.runtime.snapshotFlow

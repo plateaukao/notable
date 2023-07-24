@@ -2,7 +2,7 @@ package com.olup.notable
 
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import io.shipbook.shipbooksdk.Log
+import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
@@ -18,7 +18,6 @@ import androidx.lifecycle.lifecycleScope
 import com.olup.notable.ui.theme.InkaTheme
 import com.olup.notable.views.Router
 import com.onyx.android.sdk.api.device.epd.EpdController
-import io.shipbook.shipbooksdk.ShipBook
 import kotlinx.coroutines.launch
 
 
@@ -30,14 +29,12 @@ var TAG = "MainActivity"
 @ExperimentalComposeUiApi
 @ExperimentalFoundationApi
 class MainActivity : ComponentActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        ShipBook.start(this.application, "648adf9364c9825976c1d57e",
-            "7c53dffa949e3b55e37ab04672138feb");
-
-        Log.i(TAG, "Notable started")
-
+        hideStatusBar()
 
         if(SCREEN_WIDTH == 0){
             SCREEN_WIDTH = applicationContext.resources.displayMetrics.widthPixels
@@ -103,5 +100,13 @@ class MainActivity : ComponentActivity() {
     override fun onContentChanged() {
         super.onContentChanged()
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+    }
+
+    private fun hideStatusBar() {
+        window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//            window.insetsController?.hide(WindowInsets.Type.systemBars())
+//            window.setDecorFitsSystemWindows(false)
+//        }
     }
 }

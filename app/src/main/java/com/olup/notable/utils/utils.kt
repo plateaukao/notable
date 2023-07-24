@@ -5,7 +5,7 @@ import android.content.Intent
 import android.graphics.*
 import android.util.DisplayMetrics
 import android.util.TypedValue
-import io.shipbook.shipbooksdk.Log
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.runtime.remember

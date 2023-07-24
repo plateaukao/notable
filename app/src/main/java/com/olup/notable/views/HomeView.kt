@@ -1,6 +1,6 @@
 package com.olup.notable.views
 
-import io.shipbook.shipbooksdk.Log
+import android.util.Log
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -162,7 +162,7 @@ fun Library(navController: NavController, folderId: String? = null) {
                                         navController.navigate("library?folderId=${folder.id}")
                                     },
                                     onLongClick = {
-                                        isFolderSettingsOpen = true
+                                        isFolderSettingsOpen = !isFolderSettingsOpen
                                     },
                                 )
                                 .border(0.5.dp, Color.Black)
