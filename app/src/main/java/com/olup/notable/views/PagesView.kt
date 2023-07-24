@@ -1,4 +1,4 @@
-package com.olup.notable
+package com.olup.notable.views
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.border
@@ -16,6 +16,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.olup.notable.AppRepository
+import com.olup.notable.PageMenu
+import com.olup.notable.PagePreview
+import com.olup.notable.Topbar
+import com.olup.notable.noRippleClickable
 
 @ExperimentalFoundationApi
 @Composable

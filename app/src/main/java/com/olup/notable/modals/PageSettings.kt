@@ -1,4 +1,4 @@
-package com.olup.notable
+package com.olup.notable.modals
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -10,6 +10,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import com.olup.notable.DrawCanvas
+import com.olup.notable.PageView
 import com.olup.notable.components.SelectMenu
 import kotlinx.coroutines.launch
 

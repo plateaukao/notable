@@ -19,6 +19,7 @@ import androidx.core.content.FileProvider
 import androidx.core.graphics.toRect
 import androidx.core.graphics.toRegion
 import com.olup.notable.db.*
+import com.olup.notable.modals.AppSettings
 import com.onyx.android.sdk.data.note.TouchPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
@@ -65,7 +66,8 @@ fun deletePage(context: Context, pageId: String) {
 
         // remove from quick nav
         if(settings != null && settings.quickNavPages.contains(pageId)){
-            proxy.setKv("APPS_SETTINGS", settings.copy(quickNavPages = settings.quickNavPages - pageId),AppSettings.serializer())
+            proxy.setKv("APPS_SETTINGS", settings.copy(quickNavPages = settings.quickNavPages - pageId),
+                AppSettings.serializer())
         }
 
         launch {

@@ -13,7 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import kotlinx.coroutines.CoroutineScope
+import com.olup.notable.modals.PageSettingsModal
 import kotlinx.coroutines.launch
 
 fun PresentlyUsedToolIcon(mode: Mode, pen: Pen): Int {

@@ -1,19 +1,26 @@
-package com.olup.notable
+package com.olup.notable.views
 
 import io.shipbook.shipbooksdk.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.gestures.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.pointer.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
-import com.olup.notable.db.*
+import com.olup.notable.AppRepository
+import com.olup.notable.EditorControlTower
+import com.olup.notable.EditorGestureReceiver
+import com.olup.notable.EditorSettingCacheManager
+import com.olup.notable.EditorState
+import com.olup.notable.EditorSurface
+import com.olup.notable.History
+import com.olup.notable.PageView
+import com.olup.notable.ScrollIndicator
+import com.olup.notable.SelectedBitmap
+import com.olup.notable.Toolbar
+import com.olup.notable.convertDpToPixel
 import com.olup.notable.ui.theme.InkaTheme
-import com.onyx.android.sdk.pen.*
 
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -30,7 +37,7 @@ fun EditorView(
     if (AppRepository(context).pageRepository.getById(_pageId) == null) {
         if (_bookId != null) {
             // clean the book
-            Log.i(TAG, "Cleaning book")
+            Log.i(com.olup.notable.TAG, "Cleaning book")
             AppRepository(context).bookRepository.removePage(_bookId, _pageId)
         }
         navController.navigate("library")
@@ -79,7 +86,7 @@ fun EditorView(
             editorState.penSettings,
             editorState.mode
         ) {
-            Log.i(TAG, "saving")
+            Log.i(com.olup.notable.TAG, "saving")
             EditorSettingCacheManager.setEditorSettings(
                 context,
                 EditorSettingCacheManager.EditorSettings(

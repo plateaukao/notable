@@ -1,6 +1,5 @@
-package com.olup.notable
+package com.olup.notable.views
 
-import AppSettingsModal
 import io.shipbook.shipbooksdk.Log
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -27,13 +26,23 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.olup.notable.AppRepository
+import com.olup.notable.BreadCrumb
+import com.olup.notable.PageMenu
+import com.olup.notable.PagePreview
+import com.olup.notable.TAG
+import com.olup.notable.Topbar
 import com.olup.notable.db.Folder
 import com.olup.notable.db.Notebook
 import com.olup.notable.db.Page
+import com.olup.notable.isLatestVersion
+import com.olup.notable.modals.AppSettings
+import com.olup.notable.modals.AppSettingsModal
+import com.olup.notable.modals.FolderConfigDialog
+import com.olup.notable.modals.NotebookConfigDialog
+import com.olup.notable.noRippleClickable
 import compose.icons.FeatherIcons
 import compose.icons.feathericons.Folder
 import compose.icons.feathericons.Settings
-import java.net.URL
 import kotlin.concurrent.thread
 
 @ExperimentalFoundationApi

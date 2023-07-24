@@ -1,6 +1,5 @@
-package com.olup.notable
+package com.olup.notable.components
 
-import AppSettings
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -21,6 +20,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.olup.notable.AppRepository
+import com.olup.notable.PagePreview
+import com.olup.notable.ToolbarButton
+import com.olup.notable.modals.AppSettings
+import com.olup.notable.noRippleClickable
 import compose.icons.FeatherIcons
 import compose.icons.feathericons.Home
 import compose.icons.feathericons.Plus

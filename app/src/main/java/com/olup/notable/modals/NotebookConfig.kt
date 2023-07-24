@@ -1,4 +1,4 @@
-package com.olup.notable
+package com.olup.notable.modals
 
 import io.shipbook.shipbooksdk.Log
 import androidx.compose.foundation.background
@@ -15,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.input.key.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.TextStyle
@@ -26,10 +25,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
-import androidx.navigation.NavController
+import com.olup.notable.TAG
 import com.olup.notable.components.SelectMenu
 import com.olup.notable.db.BookRepository
-import kotlinx.coroutines.launch
+import com.olup.notable.noRippleClickable
 
 
 @ExperimentalComposeUiApi
