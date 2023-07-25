@@ -1,7 +1,5 @@
 package com.olup.notable.views
 
-import androidx.compose.animation.EnterTransition
-import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -13,10 +11,10 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.google.accompanist.navigation.animation.AnimatedNavHost
-import com.google.accompanist.navigation.animation.composable
-import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.olup.notable.DrawCanvas
 import com.olup.notable.components.QuickNav
 
@@ -25,7 +23,7 @@ import com.olup.notable.components.QuickNav
 @ExperimentalComposeUiApi
 @Composable
 fun Router() {
-    val navController = rememberAnimatedNavController()
+    val navController = rememberNavController()
     var isQuickNavOpen by remember {
         mutableStateOf(false)
     }
@@ -33,14 +31,9 @@ fun Router() {
         DrawCanvas.isDrawing.emit(!isQuickNavOpen)
     })
 
-    AnimatedNavHost(
+    NavHost(
         navController = navController,
         startDestination = "library?folderId={folderId}",
-
-        enterTransition = { EnterTransition.None },
-        exitTransition = { ExitTransition.None },
-        popEnterTransition = { EnterTransition.None },
-        popExitTransition = { ExitTransition.None },
     ) {
         composable(
             route = "library?folderId={folderId}",
@@ -102,7 +95,7 @@ fun Router() {
                 .fillMaxWidth()
                 .height(50.dp)
                 .pointerInteropFilter {
-                    if(it.size == 0f) return@pointerInteropFilter true
+                    if (it.size == 0f) return@pointerInteropFilter true
                     false
                 }
                 .pointerInput(Unit) {

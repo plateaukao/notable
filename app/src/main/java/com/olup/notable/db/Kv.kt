@@ -2,9 +2,10 @@ package com.olup.notable.db
 
 import android.content.Context
 import android.util.Log
+import androidx.arch.core.util.Function
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.room.*
-import androidx.lifecycle.map
 import com.olup.notable.TAG
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.json.Json
@@ -78,4 +79,9 @@ class KvProxy(context: Context) {
         Log.i(TAG, jsonValue)
         kvRepository.set(Kv(key, jsonValue))
     }
+}
+fun <X, Y> LiveData<X>.map(mapFunction: Function<X, Y>): LiveData<Y> {
+    val result = MediatorLiveData<Y>()
+    result.addSource(this) { x -> result.value = mapFunction.apply(x) }
+    return result
 }

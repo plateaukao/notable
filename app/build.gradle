@@ -11,11 +11,11 @@ android {
 
     defaultConfig {
         applicationId "com.olup.notable"
-        minSdk 29
+        minSdk 28
         targetSdk 33
 
         versionCode 1_00
-        versionName "0.1.00"
+        versionName "0.1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ksp {
@@ -80,7 +80,8 @@ android {
 dependencies {
 
     implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
+    implementation "androidx.compose.foundation:foundation:$compose_version"
+    implementation "androidx.compose.material:material:1.4.0-alpha02"
     debugImplementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
 
@@ -107,9 +108,6 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$room_version"
     ksp "androidx.room:room-compiler:$room_version"
 
-    implementation "io.coil-kt:coil-compose:2.2.2"
-
-    implementation "com.google.accompanist:accompanist-navigation-animation:0.29.1-alpha"
     implementation 'br.com.devsrsouza.compose.icons.android:feather:1.0.0'
 }
 
