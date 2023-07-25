@@ -81,10 +81,7 @@ fun EditorGestureReceiver(
 
                         // in case of single tap
                         if (inputsCount == 2) {
-                            coroutineScope.launch {
-                                History.moveHistory(UndoRedoType.Undo)
-                                DrawCanvas.refreshUi.emit(Unit)
-                            }
+                            state.mode = if (state.mode == Mode.Draw) Mode.Erase else Mode.Draw
                         }
                         return@awaitEachGesture
 
@@ -122,7 +119,7 @@ fun EditorGestureReceiver(
                         } else if (inputsCount == 2) {
                             Log.i(TAG, "Redo")
                             coroutineScope.launch {
-                                History.moveHistory(UndoRedoType.Redo)
+                                History.moveHistory(UndoRedoType.Undo)
                                 DrawCanvas.refreshUi.emit(Unit)
                             }
                         }
@@ -132,11 +129,10 @@ fun EditorGestureReceiver(
                             goToPreviousPage()
                         } else if (inputsCount == 2) {
                             Log.i(TAG, "Undo")
-                            state.mode = if (state.mode == Mode.Draw) Mode.Erase else Mode.Draw
-//                            coroutineScope.launch {
-//                                History.moveHistory(UndoRedoType.Undo)
-//                                DrawCanvas.refreshUi.emit(Unit)
-//                            }
+                            coroutineScope.launch {
+                                History.moveHistory(UndoRedoType.Redo)
+                                DrawCanvas.refreshUi.emit(Unit)
+                            }
                         }
 
                     }
